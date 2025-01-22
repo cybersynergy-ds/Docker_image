@@ -1,8 +1,17 @@
-FROM python:3.11-slim
-# Set working directory
+# Use an official Ubuntu image as a base
+FROM ubuntu:latest
+
+# Set the maintainer label
+LABEL maintainer="me22b2043@iiitdm.ac.in"
+
+# Update package list and install curl
+RUN apt-get update && apt-get install -y curl
+
+# Set a working directory
 WORKDIR /app
-# Typically, you would use `COPY . .` to copy files from the host machine,
-# but here we're just using a simple script.
-RUN echo 'print("Hello, world!")' > app.py
-# Run the script
-CMD ["python", "app.py"]
+
+# Expose a port (optional)
+EXPOSE 8080
+
+# Default command
+CMD ["bash"]
